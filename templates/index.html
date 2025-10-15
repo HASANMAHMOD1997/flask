@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>إدخال البيانات</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>إدخال البيانات</h1>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class="flash">
+            {% for msg in messages %}
+              <li>{{ msg }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+
+      <form method="post" action="{{ url_for('submit') }}" class="card">
+        <label for="name">الاسم</label>
+        <input id="name" name="name" type="text" placeholder="اكتب اسمك" required />
+
+        <label for="age">العمر</label>
+        <input id="age" name="age" type="number" min="0" step="1" placeholder="ادخل عمرك" required />
+
+        <button type="submit">إرسال</button>
+      </form>
+
+      <p class="muted"><a href="{{ url_for('list_users') }}">عرض جميع المُدخلات</a></p>
+    </main>
+  </body>
+  </html>
+
+
