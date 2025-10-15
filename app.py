@@ -212,6 +212,10 @@ def remove_user(user_id: int):
     flash("تم حذف السجل")
     return redirect(url_for("list_users"))
 
+@app.route("/KeepAlive", methods=["GET", "POST"])
+def KeepAlive():
+    return "OK"
+
 
 if __name__ == "__main__":
     initialize_database()
